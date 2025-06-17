@@ -86,11 +86,12 @@ static class Program
                 res.Reverse();
                 state = (int[]) initialState.Clone();
                 Console.WriteLine($"Initial state: {GetHash(state):D4}");
-                foreach (var move in res)
+                for (var i = 0; i < res.Count; i++)
                 {
+                    var move = res[i];
                     int current = state[move.Piece];
                     state[move.Piece] = move.Target;
-                    Console.WriteLine($"{move.Piece}: {current} -> {move.Target} state: {GetHash(state):D4}");
+                    Console.WriteLine($"{i,4}: [{move.Piece}] :: {current} -> {move.Target} state: {GetHash(state):D4}");
                 }
 
                 break;
